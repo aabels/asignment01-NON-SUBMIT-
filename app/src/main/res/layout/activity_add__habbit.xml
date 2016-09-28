@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add A Habit.."
+        android:text="@string/add_a_habit"
         android:id="@+id/createHabitView"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -25,7 +25,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="create"
+        android:text="@string/create"
         android:id="@+id/createHabbitButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
@@ -34,7 +34,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sunday"
+        android:text="@string/sunday"
         android:id="@+id/SundaySwitch"
         android:layout_below="@+id/createHabitView"
         android:layout_alignParentStart="true"
@@ -45,7 +45,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monday"
+        android:text="@string/monday"
         android:id="@+id/MondaySwitch"
         android:layout_below="@+id/SundaySwitch"
         android:layout_alignParentStart="true"
@@ -55,7 +55,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tuesday"
+        android:text="@string/tuesday"
         android:id="@+id/TuesdaySwitch"
         android:layout_below="@+id/MondaySwitch"
         android:layout_alignParentStart="true"
@@ -65,7 +65,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wednesday"
+        android:text="@string/wednesday"
         android:id="@+id/WednesdaySwitch"
         android:layout_below="@+id/TuesdaySwitch"
         android:layout_alignParentStart="true"
@@ -75,7 +75,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thursday"
+        android:text="@string/thursday"
         android:id="@+id/ThursdaySwitch"
         android:layout_below="@+id/WednesdaySwitch"
         android:layout_alignParentStart="true"
@@ -85,7 +85,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friday"
+        android:text="@string/friday"
         android:id="@+id/FridaySwitch"
         android:layout_below="@+id/ThursdaySwitch"
         android:layout_alignParentStart="true"
@@ -95,7 +95,7 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saturday"
+        android:text="@string/saturday"
         android:id="@+id/SaturdaySwitch"
         android:layout_below="@+id/FridaySwitch"
         android:layout_alignParentStart="true"
