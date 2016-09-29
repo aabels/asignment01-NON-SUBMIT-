@@ -25,4 +25,17 @@ public class HabitList {
     public void deleteHabit(Habit testHabit) {
         habitList.remove(testHabit);
     }
+
+    public Habit pickHabit() {
+        //need to impliment how to return index selected
+        return habitList.get(0);
+    }
+
+    public int size() {
+        return habitList.size();
+    }
+
+    public boolean contains(Habit testHabit) {
+        return habitList.contains(testHabit);
+    }
 }
