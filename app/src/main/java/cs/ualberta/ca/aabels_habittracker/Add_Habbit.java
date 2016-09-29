@@ -8,6 +8,6 @@ public class Add_Habbit extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add__habbit);
+        setContentView(R.layout.activity_add_habit);
     }
 }
