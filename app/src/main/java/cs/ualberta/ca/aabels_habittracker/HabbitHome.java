@@ -26,7 +26,6 @@ public class HabbitHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habbit_home);
-
         Button addButton = (Button)findViewById(R.id.Add_Habit_Button);
         addButton.setOnClickListener(new View.OnClickListener() {
 

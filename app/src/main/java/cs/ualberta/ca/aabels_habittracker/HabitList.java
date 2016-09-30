@@ -2,7 +2,8 @@ package cs.ualberta.ca.aabels_habittracker;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+//create master list on habit list and then create subclasses monday_array list ...etc etc
+//
 /**
  * Created by Angus on 9/28/2016.
  */
