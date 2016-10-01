@@ -54,7 +54,7 @@ public class HabbitHome extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(HabbitHome.this, "Selecting " + list.get(i).toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(HabbitHome.this, "Deleting " + list.get(i).toString(), Toast.LENGTH_SHORT).show();
                 Habit habit = (Habit) list.get(i);
                 HabitListController.getHabitList().deleteHabit(habit);
                 habitAdapter.notifyDataSetChanged();
