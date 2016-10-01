@@ -37,6 +37,7 @@ public class HabitList {
 
     public void deleteHabit(Habit testHabit) {
         habitList.remove(testHabit);
+        notifyListeners();
     }
 
     public Habit pickHabit() {

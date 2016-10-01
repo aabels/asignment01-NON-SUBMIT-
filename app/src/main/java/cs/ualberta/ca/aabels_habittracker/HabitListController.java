@@ -21,4 +21,8 @@ public class HabitListController {
     public void addHabit(Habit habit) {
         getHabitList().addHabit(habit);
     }
+
+    public void deleteHabit(Habit habit) {
+        getHabitList().deleteHabit(habit);
+    }
 }

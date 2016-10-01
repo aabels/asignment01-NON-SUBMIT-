@@ -43,7 +43,7 @@ public class Habit {
     public String getUpdateDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd HH: mm a");
-        String updated_date = aformat.format(local_date);
-        return updated_date;
+        habitUpdateDate = aformat.format(local_date);
+        return this.habitUpdateDate;
     }
 }

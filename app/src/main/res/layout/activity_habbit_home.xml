@@ -20,7 +20,8 @@ android:layout_width="match_parent" android:layout_height="match_parent">
     android:id="@+id/Delete_Habbit_Button"
     android:layout_above="@+id/Add_Habit_Button"
     android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="true" />
+    android:layout_alignParentEnd="true"
+    android:onClick="deleteAHabit" />
 
 <Button
     android:layout_width="wrap_content"
