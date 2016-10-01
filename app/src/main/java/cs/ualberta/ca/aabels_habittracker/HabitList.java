@@ -1,5 +1,7 @@
 package cs.ualberta.ca.aabels_habittracker;
 
+import android.widget.ArrayAdapter;
+
 import java.util.ArrayList;
 import java.util.Collection;
 //create master list on habit list and then create subclasses monday_array list ...etc etc
@@ -10,16 +12,28 @@ import java.util.Collection;
 public class HabitList {
 
     protected ArrayList<Habit> habitList;
+    protected ArrayList<HabitListener> habitListeners;
 
     public HabitList() {
+
         habitList = new ArrayList<Habit>();
+        habitListeners = new ArrayList<HabitListener>();
     }
 
     public Collection<Habit> getHabits() {
         return habitList;
     }
 
-    public void addHabit(Habit testHabit) {habitList.add(testHabit);}
+    public void addHabit(Habit testHabit) {
+        habitList.add(testHabit);
+        notifyListeners();
+    }
+
+    private void notifyListeners() {
+        for (HabitListener habitListener : habitListeners) {
+            habitListener.update();
+        }
+    }
 
     public void deleteHabit(Habit testHabit) {
         habitList.remove(testHabit);
@@ -36,5 +50,13 @@ public class HabitList {
 
     public boolean contains(Habit testHabit) {
         return habitList.contains(testHabit);
+    }
+
+    public void addHabitListener(HabitListener l) {
+        habitListeners.add(l);
+    }
+
+    public void removeHabitListener(HabitListener l) {
+        habitListeners.remove(l);
     }
 }

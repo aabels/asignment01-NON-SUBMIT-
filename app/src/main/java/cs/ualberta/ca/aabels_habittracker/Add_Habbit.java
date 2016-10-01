@@ -29,7 +29,7 @@ public class Add_Habbit extends AppCompatActivity {
 //        Switch sunDay = (Switch) findViewById(R.id.SundaySwitch);
 //        Toast.makeText(this, "Added Habit to: Sunday", Toast.LENGTH_SHORT).show();
 //        ht.addDay(new Habit(sunDay.isChecked()));
-        
+
         EditText habitText = (EditText) findViewById(R.id.createHabitView);
         ht.addHabit(new Habit(habitText.getText().toString()));
         finish();

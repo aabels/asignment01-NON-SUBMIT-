@@ -28,12 +28,16 @@ public class Habit {
         return this.habitName;
     }
 
+    public String toString() {
+        return getName()+'\n'+ getHabitCreationDate();
+    }
+
 //http://stackoverflow.com/questions/7651221/android-how-to-get-the-current-day-of-the-week-monday-etc-in-the-users-l
     public String getHabitCreationDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd");
-        String new_date = aformat.format(local_date);
-        return new_date;
+        habitCreationDate = aformat.format(local_date);
+        return this.habitCreationDate;
     }
 
     public String getUpdateDate() {

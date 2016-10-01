@@ -54,4 +54,32 @@ public class HabitListTest extends TestCase {
         assertTrue("Didnt choose right habit", habit.equals(testHabit));
     }
 
+    boolean updated = false;
+    public void testNotifyListeners() {
+        HabitList habitList = new HabitList();
+        updated = false;
+        HabitListener l = new HabitListener() {
+            public void update() {
+                HabitListTest.this.updated = true;
+            }
+        };
+            habitList.addHabitListener(l);
+            habitList.addHabit(new Habit("NEWWWWWW"));
+        assertTrue("Habit didnt git an update", this.updated);
+    }
+
+    public void testRemoveListeners() {
+        HabitList habitList = new HabitList();
+        updated = false;
+        HabitListener l = new HabitListener() {
+            public void update() {
+                HabitListTest.this.updated = true;
+            }
+        };
+        habitList.addHabitListener(l);
+        habitList.removeHabitListener(l);
+        habitList.addHabit(new Habit("NEWWWWWW"));
+        assertFalse("Habit didnt get an update ", this.updated);
+    }
+
 }
