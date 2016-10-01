@@ -31,6 +31,16 @@ public class HabitTest extends TestCase{
         assertTrue("Habit date is not equal", habitCreationDate.equals(habit.getHabitCreationDate()));
     }
 
+    public void testUpdateDateHabit() {
+        String habitName = "A habit";
+        String habitCreationDate = "2016-09-29";
+        String habitUpdateDate = "2016-09-30 01:22 AM";
+        Habit habit = new Habit(habitName);
+        assertTrue("Habit name is not equal", habitName.equals(habit.getName()));
+        assertTrue("Habit name is null", habit.getHabitCreationDate().equals("2016-09-29"));
+        assertTrue("Habit date is not equal", habitCreationDate.equals(habit.getHabitCreationDate()));
+        assertTrue("Habit date is not equal", habitUpdateDate.equals(habit.getUpdateDate()));
+    }
 //    public void testDayOfWeek() {
 //        Date habitCreationDate = new Date();
 //        Habit habit = new Habit(habitName, habitCreationDate);

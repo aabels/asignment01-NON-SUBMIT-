@@ -10,6 +10,7 @@ import java.util.Date;
 public class Habit {
     protected String habitName;
     protected String habitCreationDate;
+    protected String habitUpdateDate;
     private Date local_date;
 
 //    public Habit(String habitName) {
@@ -20,6 +21,7 @@ public class Habit {
     public Habit(String habitName) {
         this.habitName = habitName;
         this.habitCreationDate = getHabitCreationDate();
+        this.habitUpdateDate = getUpdateDate();
     }
 
     public String getName() {
@@ -32,5 +34,12 @@ public class Habit {
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd");
         String new_date = aformat.format(local_date);
         return new_date;
+    }
+
+    public String getUpdateDate() {
+        local_date = new Date();
+        DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd HH: mm a");
+        String updated_date = aformat.format(local_date);
+        return updated_date;
     }
 }

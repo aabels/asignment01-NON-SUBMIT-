@@ -30,7 +30,8 @@
         android:id="@+id/createHabbitButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="creatHabitAction" />
 
     <Switch
         android:layout_width="wrap_content"

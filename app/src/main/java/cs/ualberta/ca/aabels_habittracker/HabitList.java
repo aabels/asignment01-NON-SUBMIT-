@@ -19,9 +19,7 @@ public class HabitList {
         return habitList;
     }
 
-    public void addHabit(Habit testHabit) {
-        habitList.add(testHabit);
-    }
+    public void addHabit(Habit testHabit) {habitList.add(testHabit);}
 
     public void deleteHabit(Habit testHabit) {
         habitList.remove(testHabit);
