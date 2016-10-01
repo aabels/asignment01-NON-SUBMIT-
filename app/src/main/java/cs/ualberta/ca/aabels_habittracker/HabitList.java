@@ -2,6 +2,7 @@ package cs.ualberta.ca.aabels_habittracker;
 
 import android.widget.ArrayAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 //create master list on habit list and then create subclasses monday_array list ...etc etc
@@ -9,7 +10,7 @@ import java.util.Collection;
 /**
  * Created by Angus on 9/28/2016.
  */
-public class HabitList {
+public class HabitList implements Serializable {
 
     protected ArrayList<Habit> habitList;
     protected ArrayList<HabitListener> habitListeners;

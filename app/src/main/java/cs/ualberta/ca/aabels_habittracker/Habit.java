@@ -1,5 +1,7 @@
 package cs.ualberta.ca.aabels_habittracker;
 
+import java.io.Serializable;
+import java.io.SerializablePermission;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.Date;
 /**
  * Created by Angus on 9/28/2016.
  */
-public class Habit {
+public class Habit implements Serializable {
     protected String habitName;
     protected String habitCreationDate;
     protected String habitUpdateDate;
