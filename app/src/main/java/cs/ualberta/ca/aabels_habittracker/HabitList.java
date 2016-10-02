@@ -2,6 +2,7 @@ package cs.ualberta.ca.aabels_habittracker;
 
 import android.widget.ArrayAdapter;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,13 +13,22 @@ import java.util.Collection;
  */
 public class HabitList implements Serializable {
 
-    protected ArrayList<Habit> habitList;
-    protected ArrayList<HabitListener> habitListeners;
+    private static final long serialVersionUID = 12L;
+
+    protected ArrayList<Habit> habitList = null;
+    protected transient ArrayList<HabitListener> habitListeners = null;
 
     public HabitList() {
 
         habitList = new ArrayList<Habit>();
         habitListeners = new ArrayList<HabitListener>();
+    }
+
+    private ArrayList<HabitListener> getHabitListeners() {
+        if (habitListeners == null) {
+            habitListeners = new ArrayList<HabitListener>();
+        }
+        return habitListeners;
     }
 
     public Collection<Habit> getHabits() {
@@ -30,8 +40,8 @@ public class HabitList implements Serializable {
         notifyListeners();
     }
 
-    private void notifyListeners() {
-        for (HabitListener habitListener : habitListeners) {
+    public void notifyListeners() {
+        for (HabitListener habitListener : getHabitListeners()) {
             habitListener.update();
         }
     }
@@ -55,10 +65,10 @@ public class HabitList implements Serializable {
     }
 
     public void addHabitListener(HabitListener l) {
-        habitListeners.add(l);
+        getHabitListeners().add(l);
     }
 
     public void removeHabitListener(HabitListener l) {
-        habitListeners.remove(l);
+        getHabitListeners().remove(l);
     }
 }

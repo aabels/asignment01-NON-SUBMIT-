@@ -33,11 +33,16 @@ public class HabbitHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habbit_home);
-        ListView listView = (ListView) findViewById(R.id.habitListView);
+
+        HabitListManager.initHabitManager(this.getApplicationContext());
+
+        final ListView listView = (ListView) findViewById(R.id.habitListView);
+
         Collection<Habit> habits = HabitListController.getHabitList().getHabits();
         final ArrayList list = new ArrayList<Habit>(habits);
         final ArrayAdapter<Habit> habitAdapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(habitAdapter);
+
 
         //Added a Habit Change observer
         // need to implement a way to remove the habit listener when we clean up
@@ -68,7 +73,11 @@ public class HabbitHome extends AppCompatActivity {
 //        // item history will have a button for completing and will have most recent updated date and days set
 //        //still need to impliment saveing/loading either from file using gson
 
-
+        public void historyLog (View v) {
+            Button historyLog = (Button)findViewById(R.id.History_Habbit_Button);
+            Intent intent = new Intent (HabbitHome.this,HabitHistory.class);
+            startActivity(intent);
+        }
 
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -80,8 +89,8 @@ public class HabbitHome extends AppCompatActivity {
 
     public void addAHabit(View v) {
 
-//        HabitListController ht = new HabitListController();
         Button addButton = (Button)findViewById(R.id.Add_Habit_Button);
-        Intent intent = new Intent(getApplicationContext(),Add_Habbit.class);startActivity(intent);
+        Intent intent = new Intent(HabbitHome.this,Add_Habbit.class);
+        startActivity(intent);
     }
 }

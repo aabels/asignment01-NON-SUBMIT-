@@ -10,9 +10,13 @@ import java.util.Date;
  * Created by Angus on 9/28/2016.
  */
 public class Habit implements Serializable {
+
+    private static final long serialVersionUID = 40L;
+
     protected String habitName;
     protected String habitCreationDate;
     protected String habitUpdateDate;
+    protected String habitCompletetion;
     private Date local_date;
 
 //    public Habit(String habitName) {
@@ -24,6 +28,7 @@ public class Habit implements Serializable {
         this.habitName = habitName;
         this.habitCreationDate = getHabitCreationDate();
         this.habitUpdateDate = getUpdateDate();
+        this.habitCompletetion = habitCompletetion;
     }
 
     public String getName() {
@@ -32,6 +37,25 @@ public class Habit implements Serializable {
 
     public String toString() {
         return getName()+'\n'+ getHabitCreationDate();
+    }
+
+    public boolean equals (Object compareHabit) {
+        if (compareHabit != null &&
+                compareHabit.getClass() == this.getClass()) {
+            return this.equals((Habit) compareHabit);
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equals (Habit compareHabit) {
+        if(compareHabit == null){
+            return false;
+        }
+        return getName().equals(compareHabit.getName());
+    }
+    public int hashCode() {
+        return ("Habit:"+getName()).hashCode();
     }
 
 //http://stackoverflow.com/questions/7651221/android-how-to-get-the-current-day-of-the-week-monday-etc-in-the-users-l
@@ -48,4 +72,8 @@ public class Habit implements Serializable {
         habitUpdateDate = aformat.format(local_date);
         return this.habitUpdateDate;
     }
+
+//    public String getHabitCompletetion() {
+//        return null;
+//    }
 }
