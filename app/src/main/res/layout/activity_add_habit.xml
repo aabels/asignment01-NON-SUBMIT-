@@ -42,7 +42,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="56dp"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="sundaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -52,7 +53,8 @@
         android:layout_below="@+id/SundaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="mondaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
         android:layout_below="@+id/MondaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="tuesdaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -72,7 +75,8 @@
         android:layout_below="@+id/TuesdaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="wednesdaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -82,7 +86,8 @@
         android:layout_below="@+id/WednesdaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="thursdaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -92,7 +97,8 @@
         android:layout_below="@+id/ThursdaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="fridaySwitch"/>
 
     <Switch
         android:layout_width="wrap_content"
@@ -102,6 +108,7 @@
         android:layout_below="@+id/FridaySwitch"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:checked="false" />
+        android:checked="false"
+        android:onClick="saturdaySwitch"/>
 
 </RelativeLayout>

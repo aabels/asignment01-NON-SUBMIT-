@@ -34,6 +34,12 @@ public class HabitList implements Serializable {
     public Collection<Habit> getHabits() {
         return habitList;
     }
+    
+    //Get collection of habit completions
+//    public Collection<Habit> getAllHabitCompletions() {
+//        return habitCompletions;
+//    }
+
 
     public void addHabit(Habit testHabit) {
         habitList.add(testHabit);

@@ -1,9 +1,13 @@
 package cs.ualberta.ca.aabels_habittracker;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 import java.io.SerializablePermission;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,22 +17,29 @@ public class Habit implements Serializable {
 
     private static final long serialVersionUID = 40L;
 
+    protected String daysOfTheWeekString = "";
     protected String habitName;
     protected String habitCreationDate;
     protected String habitUpdateDate;
-    protected String habitCompletetion;
+//    protected String habitCompletetion;
+    private ArrayList<String> daysOfTheWeekList;
     private Date local_date;
 
-//    public Habit(String habitName) {
-//        this.habitName = habitName;
-//        this.local_date = new Date();
-//    }
 
     public Habit(String habitName) {
         this.habitName = habitName;
         this.habitCreationDate = getHabitCreationDate();
         this.habitUpdateDate = getUpdateDate();
-        this.habitCompletetion = habitCompletetion;
+//        this.habitCompletetion = habitCompletion;
+    }
+//
+    public String getDaysOfTheWeek() {
+        daysOfTheWeekString = TextUtils.join(", ", daysOfTheWeekList);
+        return daysOfTheWeekString;
+    }
+
+    public void setDaysOfTheWeek( ArrayList<String> dayList) {
+        this.daysOfTheWeekList = dayList;
     }
 
     public String getName() {
@@ -36,7 +47,10 @@ public class Habit implements Serializable {
     }
 
     public String toString() {
-        return getName()+'\n'+ getHabitCreationDate();
+        return getName()+"\n"+
+                "                    " +
+                "("+getDaysOfTheWeek()+")"
+                +"\n"+ getHabitCreationDate();
     }
 
     public boolean equals (Object compareHabit) {
@@ -54,6 +68,7 @@ public class Habit implements Serializable {
         }
         return getName().equals(compareHabit.getName());
     }
+
     public int hashCode() {
         return ("Habit:"+getName()).hashCode();
     }
@@ -62,18 +77,16 @@ public class Habit implements Serializable {
     public String getHabitCreationDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd");
-        habitCreationDate = aformat.format(local_date);
+        habitCreationDate = "Created On: "+aformat.format(local_date);
         return this.habitCreationDate;
     }
 
+    //Have not figured away to show to show on screen the updated time but
+    // this method does return the date, hour and min of the updated habit
     public String getUpdateDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd HH: mm a");
         habitUpdateDate = aformat.format(local_date);
         return this.habitUpdateDate;
     }
-
-//    public String getHabitCompletetion() {
-//        return null;
-//    }
 }
