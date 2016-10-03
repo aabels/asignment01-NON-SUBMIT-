@@ -1,10 +1,8 @@
 package cs.ualberta.ca.aabels_habittracker;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -19,23 +17,27 @@ public class Add_Habbit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_habit);
+        //Habit manager has to be initialized to know about the new created habit
         HabitListManager.initHabitManager(this.getApplicationContext());
     }
 
     public void creatHabitAction(View v) {
         Toast.makeText(this, "Creating Habit", Toast.LENGTH_SHORT).show();
-
+        //A new habit controller is created and the text and date is
+        // stored from the page to the Habit Object
         HabitListController ht = new HabitListController();
-
         EditText habitText = (EditText) findViewById(R.id.createHabitView);
         //Grabs the habitName and creates new instance of the Habit
         Habit habit = new Habit((habitText.getText().toString()));
-        //Have not figured how to display the Days Selected but they are saved to the Habit.
+        //Have not figured how to display the updated completion Date but I have one
+        //Add the selected days to the habit and add to the habit controller
         habit.setDaysOfTheWeek(dayList);
         ht.addHabit(habit);
         finish();
     }
 
+    //Days of the Week Switches to check if on/off add to dayList which gets
+    //pulled into the habit class and saved
     public void sundaySwitch(View v) {
         // somehow get the value of the switch the got turned on
         Toast.makeText(this, "Added Habit to: Sunday", Toast.LENGTH_SHORT).show();
@@ -49,7 +51,6 @@ public class Add_Habbit extends AppCompatActivity {
     }
 
     public void mondaySwitch(View v) {
-        // somehow get the value of the switch the got turned on
         Toast.makeText(this, "Added Habit to: Monday", Toast.LENGTH_SHORT).show();
         boolean on = ((Switch) v).isChecked();
         if (on) {
@@ -120,4 +121,3 @@ public class Add_Habbit extends AppCompatActivity {
         }
     }
 }
-

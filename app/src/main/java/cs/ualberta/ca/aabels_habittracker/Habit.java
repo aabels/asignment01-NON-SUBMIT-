@@ -1,10 +1,7 @@
 package cs.ualberta.ca.aabels_habittracker;
 
 import android.text.TextUtils;
-
 import java.io.Serializable;
-import java.io.SerializablePermission;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +18,6 @@ public class Habit implements Serializable {
     protected String habitName;
     protected String habitCreationDate;
     protected String habitUpdateDate;
-//    protected String habitCompletetion;
     private ArrayList<String> daysOfTheWeekList;
     private Date local_date;
 
@@ -32,12 +28,14 @@ public class Habit implements Serializable {
         this.habitUpdateDate = getUpdateDate();
 //        this.habitCompletetion = habitCompletion;
     }
-//
+    //http://stackoverflow.com/questions/599161/best-way-to-convert-an-arraylist-to-a-string
+    //Author: JJ Geewax
+    //converts the String array into a concatenated string
     public String getDaysOfTheWeek() {
         daysOfTheWeekString = TextUtils.join(", ", daysOfTheWeekList);
         return daysOfTheWeekString;
     }
-
+    //Pulls the dayList from the addHabit page to save to desired Habit Object
     public void setDaysOfTheWeek( ArrayList<String> dayList) {
         this.daysOfTheWeekList = dayList;
     }
@@ -46,6 +44,7 @@ public class Habit implements Serializable {
         return this.habitName;
     }
 
+    //Shows the Habit Name Date created and Days Selected to the ListView on HabbitHome page
     public String toString() {
         return getName()+"\n"+
                 "                    " +
@@ -53,6 +52,7 @@ public class Habit implements Serializable {
                 +"\n"+ getHabitCreationDate();
     }
 
+    //used for testing how the Habit object is saved/loaded
     public boolean equals (Object compareHabit) {
         if (compareHabit != null &&
                 compareHabit.getClass() == this.getClass()) {
@@ -73,7 +73,8 @@ public class Habit implements Serializable {
         return ("Habit:"+getName()).hashCode();
     }
 
-//http://stackoverflow.com/questions/7651221/android-how-to-get-the-current-day-of-the-week-monday-etc-in-the-users-l
+    //http://stackoverflow.com/questions/7651221/android-how-to-get-the-current-day-of-the-week-monday-etc-in-the-users-l
+    //Author: Silambarasan Poonguti
     public String getHabitCreationDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -82,7 +83,7 @@ public class Habit implements Serializable {
     }
 
     //Have not figured away to show to show on screen the updated time but
-    // this method does return the date, hour and min of the updated habit
+    // this method does return the date, hour and min of the updated habit for completions
     public String getUpdateDate() {
         local_date = new Date();
         DateFormat aformat = new SimpleDateFormat("yyyy-MM-dd HH: mm a");

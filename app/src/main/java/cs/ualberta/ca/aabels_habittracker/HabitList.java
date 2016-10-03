@@ -1,13 +1,9 @@
 package cs.ualberta.ca.aabels_habittracker;
 
-import android.widget.ArrayAdapter;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-//create master list on habit list and then create subclasses monday_array list ...etc etc
-//
+
 /**
  * Created by Angus on 9/28/2016.
  */
@@ -16,10 +12,10 @@ public class HabitList implements Serializable {
     private static final long serialVersionUID = 12L;
 
     protected ArrayList<Habit> habitList = null;
+    //HabitManager doesnt need to save the habitListeners
     protected transient ArrayList<HabitListener> habitListeners = null;
 
     public HabitList() {
-
         habitList = new ArrayList<Habit>();
         habitListeners = new ArrayList<HabitListener>();
     }
@@ -31,21 +27,17 @@ public class HabitList implements Serializable {
         return habitListeners;
     }
 
+    //returns a list of all Habits
     public Collection<Habit> getHabits() {
         return habitList;
     }
-    
-    //Get collection of habit completions
-//    public Collection<Habit> getAllHabitCompletions() {
-//        return habitCompletions;
-//    }
-
 
     public void addHabit(Habit testHabit) {
         habitList.add(testHabit);
         notifyListeners();
     }
 
+    //called when a habit is updated/modified
     public void notifyListeners() {
         for (HabitListener habitListener : getHabitListeners()) {
             habitListener.update();
@@ -57,9 +49,8 @@ public class HabitList implements Serializable {
         notifyListeners();
     }
 
-    public Habit pickHabit() {
-        //need to impliment how to return index selected
-        return habitList.get(0);
+    public Habit pickHabit(int index) {
+        return habitList.get(index);
     }
 
     public int size() {

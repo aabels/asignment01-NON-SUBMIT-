@@ -1,5 +1,5 @@
 /*
-{one line to give the program's name and a brief idea of what it does.}
+{ HabitTracker is a easy way to Display all important tasks, duties, or hobbies that you want to do}
         Copyright (C) {2016}  {Angus Abels}
 
         This program is free software: you can redistribute it and/or modify
@@ -20,10 +20,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -34,18 +32,19 @@ public class HabbitHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habbit_home);
 
+        //Initializes habit manager to save/load the habit list
         HabitListManager.initHabitManager(this.getApplicationContext());
 
-        final ListView listView = (ListView) findViewById(R.id.habitListView);
 
+        final ListView listView = (ListView) findViewById(R.id.habitListView);
+        //Collection of habits is grabed by the HabitListController to populate
+        //the habit Array Adapter inside the habitListView
         Collection<Habit> habits = HabitListController.getHabitList().getHabits();
         final ArrayList list = new ArrayList<Habit>(habits);
         final ArrayAdapter<Habit> habitAdapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(habitAdapter);
 
-
-        //Added a Habit Change observer
-        // need to implement a way to remove the habit listener when we clean up
+        //Added a Habit Change observer to tell when the list needs to be updated
         HabitListController.getHabitList().addHabitListener(new HabitListener() {
             @Override
             public void update() {
@@ -56,6 +55,7 @@ public class HabbitHome extends AppCompatActivity {
             }
         });
 
+        //Long click Deletes the the habit object from the app and then the adapter is updated
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,30 +66,15 @@ public class HabbitHome extends AppCompatActivity {
                 return false;
             }
         });
-
-        }
-
-//        //This will be for individual item history
-//        // item history will have a button for completing and will have most recent updated date and days set
-//        //still need to impliment saveing/loading either from file using gson
-
-        public void historyLog (View v) {
-            Button historyLog = (Button)findViewById(R.id.History_Habbit_Button);
-            Intent intent = new Intent (HabbitHome.this,HabitHistory.class);
-            startActivity(intent);
-        }
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(HabbitHome.this, "History of " + list.get(i).toString(), Toast.LENGTH_SHORT).show();
-//                Habit habit = (Habit) list.get(i);
-//            }
-//        });
-
+    }
+    //This will be for individual item history
+    // item history will have a button for completing and will have most recent updated date and days set
+    public void historyLog (View v) {
+        Intent intent = new Intent (HabbitHome.this,HabitHistory.class);
+        startActivity(intent);
+    }
+    //Add habit view page
     public void addAHabit(View v) {
-
-        Button addButton = (Button)findViewById(R.id.Add_Habit_Button);
         Intent intent = new Intent(HabbitHome.this,Add_Habbit.class);
         startActivity(intent);
     }

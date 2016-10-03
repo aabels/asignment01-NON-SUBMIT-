@@ -18,11 +18,10 @@ import java.io.ObjectOutputStream;
 public class HabitListManager {
     static final String prefile = "HabitList";
     static final String hlKey = "habitList";
-
     Context context;
 
+    //creates a habitListManager with all the context of that page
     static private HabitListManager habitListManager = null;
-
     public static void initHabitManager(Context context) {
         if (habitListManager == null){
             if (context == null) {
@@ -43,7 +42,8 @@ public class HabitListManager {
     public HabitListManager(Context context) {
         this.context = context;
     }
-
+    //Loads the content/context of the habits to the controller to be saved or loaded
+    //in Base64 Objects
     public HabitList loadHabitList() throws IOException, ClassNotFoundException {
         SharedPreferences settings = context.getSharedPreferences(prefile, Context.MODE_PRIVATE);
         String habitListData = settings.getString(hlKey, "");
@@ -54,12 +54,14 @@ public class HabitListManager {
                 return habitListFromString(habitListData);
             }
         }
-
+    //
+    //decodes habitList data to string
     static public HabitList habitListFromString(String habitListData) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bi = new ByteArrayInputStream(Base64.decode(habitListData, Base64.DEFAULT));
         ObjectInputStream oi = new ObjectInputStream(bi);
         return (HabitList) oi.readObject();
     }
+    //encodes the habit data back to a string
     static public String habitListToString(HabitList thl) throws IOException{
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         ObjectOutputStream oo = new ObjectOutputStream(bo);
@@ -76,7 +78,4 @@ public class HabitListManager {
         editor.commit();
 
     }
-
-
-
 }
